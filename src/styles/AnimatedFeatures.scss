@@ -1,0 +1,202 @@
+// /src/styles/AnimatedFeatures.scss
+
+@use './variables' as *;
+
+// --- Base Container and Sticky Styles (Unchanged) ---
+.animated-features-container {
+    height: 400vh;
+    position: relative;
+    background-color: $background-color;
+    color: $text-primary;
+    font-family: $font-family;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.feature-text {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+    h2 {
+        position: absolute;
+        width: 100%;
+        font-size: 3rem;
+        font-weight: 600;
+        letter-spacing: -1px;
+    }
+}
+
+.browser-mockup {
+    width: 70%;
+    max-width: 900px;
+    height: 500px;
+    background: $mockup-background;
+    border-radius: 12px;
+    border: 1px solid $border-color;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    transform: scale(0.8) rotateX(10deg);
+    &::before {
+        content: ' ';
+        display: block;
+        height: 40px;
+        width: 100%;
+        background-color: #323639;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+.browser-ui {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+// --- NEW DETAILED FEATURE STYLES ---
+
+.feature {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    // Remove the generic border, we'll style each feature individually
+}
+
+// Scene 1: Color Picker
+#color-picker {
+    .color-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .color-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 3px solid transparent;
+        transition: transform 0.2s;
+        &:hover { transform: scale(1.1); }
+        &.active { border-color: white; }
+    }
+    .eyedropper {
+        font-size: 40px;
+        margin-top: 30px;
+    }
+}
+
+// Scene 2: Extensions
+#extensions {
+    align-items: flex-start;
+    width: 60%;
+    .extension-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        width: 100%;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        span {
+            margin-right: 15px;
+            font-size: 1.5rem;
+            img { height: 24px; }
+        }
+    }
+}
+
+// Scene 3: Tab Groups
+#tab-groups {
+    align-items: flex-start;
+    width: 80%;
+    .tab-group-header {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .tab {
+        background: #3c4043;
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        width: 100%;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        span { margin-right: 12px; }
+    }
+}
+
+// Scene 4: Safety Check
+#safety-check {
+    text-align: center;
+    .safety-check-icon { font-size: 5rem; }
+    h3 {
+        font-size: 2rem;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: $google-blue;
+    }
+    p {
+        max-width: 450px;
+        color: $text-secondary;
+        line-height: 1.5;
+    }
+    .safety-check-button {
+        margin-top: 25px;
+        padding: 12px 30px;
+        font-size: 1rem;
+        color: #202124;
+        background-color: $google-blue;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+
+
+// Add this to /src/styles/AnimatedFeatures.scss
+
+.feature .feature-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #bdc1c6; // A slightly dimmer, secondary text color
+    position: absolute;
+    top: 3.5rem;
+    text-align: center;
+}
+
+// Add this block to override styles specifically for the Safety Check title
+#safety-check .feature-title {
+    position: static; // Let it flow normally with the other content
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #8ab4f8; // Use the accent blue color
+}
